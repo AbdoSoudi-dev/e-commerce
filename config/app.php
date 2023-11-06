@@ -55,9 +55,22 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
     'asset_url' => env('ASSET_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | API VERSION
+    |--------------------------------------------------------------------------
+    |
+    | Here you will specify the API version of your application. This value
+    | is used when the framework needs to place the application's name in
+    | a notification or any other location as required by the application
+    |
+    */
+
+    'api_version' => env('API_VERSION', 'v1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +181,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+
     ])->toArray(),
 
     /*

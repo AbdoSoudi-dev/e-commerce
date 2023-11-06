@@ -18,6 +18,13 @@ Route::get('/', function () {
 });
 
 
+Route::group(
+    [ 'prefix' => 'dashboard',
+        'as' => 'dashboard.*']
+    , function () {
+
+});
+
 Route::get('/{vue_capture?}', function () {
-    return view('welcome');
+    return view('index');
 })->where('vue_capture', '[\/\w\.-]*');
