@@ -1,13 +1,16 @@
 <script setup>
     import { ref } from "vue";
-    import pageLayout from "../layouts/pageLayout.vue"
+    import AppHeader from "../components/AppHeader.vue";
+    import AppFooter from "../components/AppFooter.vue";
 
 </script>
 
 <template>
-    <page-layout>
-        this ts textsahkd kl;dsa klfn asdm
-    </page-layout>
+    <div>
+        <app-header />
+            <router-view />
+        <app-footer />
+    </div>
 </template>
 
 <style scoped>
