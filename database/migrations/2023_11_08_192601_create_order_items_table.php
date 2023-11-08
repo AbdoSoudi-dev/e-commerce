@@ -11,17 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_prices', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')
+                ->constrained('orders')
+                ->cascadeOnDelete();
             $table->foreignId('product_id')
                 ->constrained('products')
                 ->cascadeOnDelete();
-            $table->string('image');
-            $table->string('color');
-            $table->unsignedFloat('price');
-            $table->enum('size', ['s', 'm', 'l', 'xl', 'xxl', 'xxxl']);
-            $table->unsignedSmallInteger('quantity');
-            $table->timestamps();
+            $table->float('price');
+            $table->unsignedSmallInteger('quantity')->default(1);
+            $table->string('size', 10);
+            $table->string('color', 20);
+
+            $table->unique(['order_id', 'product_price_id']);
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_prices');
+        Schema::dropIfExists('order_items');
     }
 };

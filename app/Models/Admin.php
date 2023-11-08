@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\ActiveGlobalScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,8 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, ActiveGlobalScope;
     /**
      * The attributes that are mass assignable.
      *
@@ -19,7 +20,6 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username',
         'email',
         'password',
         'status',
@@ -45,4 +45,11 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function notifications() : MorphMany
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
+
 }
