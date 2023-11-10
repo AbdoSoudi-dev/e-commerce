@@ -4,9 +4,10 @@ namespace App\Services\Cart\Repositories;
 
 use App\Models\Cart;
 use App\Models\ProductPrice;
+use App\Services\Cart\Contracts\CartContract;
 use Illuminate\Support\Collection;
 
-class CartRepository
+class CartRepository implements CartContract
 {
     protected Cart $cart;
 
@@ -60,5 +61,26 @@ class CartRepository
         return $this->get()->sum(function($item) {
             return $item->quantity * $item->product_price->price;
         });
+    }
+
+    public function deleteCartsProduct($productPriceId): void
+    {
+        $this->cart::query()
+            ->withoutGlobalScope('cookie_id')
+            ->where('product_price_id', '=', $productPriceId)
+            ->delete();
+    }
+
+    public function decrementCartsProductQuantity(ProductPrice $productPrice): void
+    {
+        $this->cart::query()
+            ->withoutGlobalScope('cookie_id')
+            ->where('product_price_id', '=', $productPrice->id)
+            ->where('quantity', '>', $productPrice->quantity)
+            ->get()
+            ->each(function($item) use ($productPrice) {
+                $item->quantity = $productPrice->quantity;
+                $item->save();
+            });
     }
 }
