@@ -15,6 +15,13 @@ class ProductPrice extends Model
         'product_id', 'image', 'price', 'size', 'color',  'quantity'
     ];
 
+    protected static function booted() : void
+    {
+        static::addGlobalScope('available', function ($query) {
+            $query->where('quantity', '>', 0);
+        });
+    }
+
     public function product() : BelongsTo
     {
         return $this->belongsTo(Product::class);

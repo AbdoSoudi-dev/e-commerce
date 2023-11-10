@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Traits\ActiveGlobalScope;
-use App\Traits\SetSlugCreating;
+use App\Traits\Models\ActiveGlobalScope;
+use App\Traits\Models\SetSlugCreating;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

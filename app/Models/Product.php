@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use App\Enums\ProductStatus;
-use App\Traits\SetSlugCreating;
+use App\Traits\Models\ActiveGlobalScope;
+use App\Traits\Models\SetSlugCreating;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
-    use HasFactory, SetSlugCreating;
+    use HasFactory, SetSlugCreating, ActiveGlobalScope;
 
     protected $fillable = [
         'name', 'slug', 'image', 'description', 'rating', 'admin_id', 'category_id','status'

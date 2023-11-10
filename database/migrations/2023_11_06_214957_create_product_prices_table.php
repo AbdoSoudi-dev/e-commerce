@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')
                 ->constrained('products')
                 ->cascadeOnDelete();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('color');
             $table->unsignedFloat('price');
             $table->enum('size', ['s', 'm', 'l', 'xl', 'xxl', 'xxxl']);

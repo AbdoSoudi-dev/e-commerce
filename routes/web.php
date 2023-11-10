@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\{
-    ProductController, AdminController
+    ProductsController, AdminController
 };
 
 Route::group(
@@ -12,7 +12,7 @@ Route::group(
     ], function () {
 
     Route::view('/', 'dashboard.index');
-    Route::resource('products', ProductController::class)
+    Route::resource('products', ProductsController::class)
         ->name('product', 'dashboard.products');
 
 });

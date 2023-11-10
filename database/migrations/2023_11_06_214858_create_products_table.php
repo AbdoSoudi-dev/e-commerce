@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('category_id')
                 ->constrained('categories')
                 ->cascadeOnDelete();
-            $table->enum('status', ['active', 'draft', 'archived']);
+            $table->enum('status', ['active', 'draft', 'archived'])->default('active');
             $table->timestamps();
         });
     }
