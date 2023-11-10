@@ -31,7 +31,12 @@ class ProductResource extends JsonResource
                     'quantity' => $item->quantity,
                     'color' => $item->color,
                     'size' => $item->size,
-                    'image' => $item->image
+                    'image' => $item->image,
+                    'status' => match ($item->quantity) {
+                        0 => 'Out of Stock',
+                        1, 2 => 'low stock',
+                        default => 'In Stock',
+                    },
                 ]),
         ];
     }

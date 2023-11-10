@@ -21,11 +21,10 @@ class ProductPriceFactory extends Factory
         return [
             'product_id' => Product::factory(),
             'image' => $this->faker->imageUrl(),
+            'color' => $this->faker->randomElement(['red', 'green', 'blue', 'yellow', 'black', 'white']),
             'price' => $this->faker->numberBetween(100, 1000),
             'size' => $this->faker->randomElement(['s', 'm', 'l', 'xl', 'xxl', 'xxxl']),
             'quantity' => $this->faker->numberBetween(1, 20),
-            'status' => $this->faker->randomElement(['active', 'draft', 'archived']),
-            'user_id' => User::factory(),
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,8 @@ class ProductFactory extends Factory
             'image' => $this->faker->imageUrl,
             'description' => $this->faker->text(),
             'rating' => $this->faker->randomFloat(2, 0, 5),
-            'category' => Category::factory()
+            'category_id' => Category::factory(),
+            'admin_id' => Admin::factory()
         ];
     }
 }

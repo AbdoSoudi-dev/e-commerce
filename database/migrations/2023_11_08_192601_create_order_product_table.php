@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('size', 10);
             $table->string('color', 20);
 
-            $table->unique(['order_id', 'product_price_id']);
+            $table->unique(['order_id', 'product_id']);
         });
     }
 
