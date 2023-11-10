@@ -46,10 +46,6 @@ class Admin extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function notifications() : MorphMany
-    {
-        return $this->morphMany(Notification::class, 'notifiable');
-    }
 
 
 }
