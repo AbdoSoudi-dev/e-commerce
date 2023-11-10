@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
                 'id' => $this->category->id,
                 'name' => $this->category->name,
             ],
-            'variants' => $this->product_prices->transform(fn($item)=> [
+            'variants' => $this->productPrices->transform(fn($item)=> [
                     'id' => $item->id,
                     'name' => $item->name,
                     'price' => $item->price,

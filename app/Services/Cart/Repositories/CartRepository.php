@@ -18,7 +18,7 @@ class CartRepository implements CartContract
 
     public function get() : Collection
     {
-        return $this->cart::with('product_price.product')->get();
+        return $this->cart::with('productPrice.product')->get();
     }
 
     public function add(ProductPrice $productPrice, $quantity = 1) : Cart

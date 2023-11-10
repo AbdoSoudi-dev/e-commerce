@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
             'name' => $this->faker->name(),
             'slug' => $this->faker->unique()->slug(),
             'description' => $this->faker->text(),
-            'status' => $this->faker->randomElement(['active', 'archived']),
+            'status' => 'active',
         ];
     }
 }

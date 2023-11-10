@@ -20,14 +20,14 @@ class ProductRepository implements ProductContract
     public function get() : Collection
     {
         return $this->product::withoutGlobalScope('active')
-            ->with('product_prices',fn($query)=>$query->withoutGlobalScope('available'))
+            ->with('productPrices',fn($query)=>$query->withoutGlobalScope('available'))
             ->get();
     }
 
     public function getAvailable(): LengthAwarePaginator
     {
         return $this->product::with('category')
-            ->withWhereHas('product_prices')
+            ->withWhereHas('productPrices')
             ->paginate();
     }
 
@@ -45,13 +45,13 @@ class ProductRepository implements ProductContract
     public function show(int $id): Product
     {
         return $this->product::find($id)
-            ->with('product_prices');
+            ->with('productPrices');
     }
 
     public function showBySlug(string $slug): Product
     {
         return $this->product::where('slug', $slug)
-                ->with('product_prices')
+                ->with('productPrices')
                 ->first();
     }
 
