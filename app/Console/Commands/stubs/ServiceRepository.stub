@@ -1,0 +1,10 @@
+<?php
+
+namespace {{namespace}};
+
+use {{serviceContract}};
+
+class {{class}} implements {{contract}}
+{
+
+}
