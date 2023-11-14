@@ -1,10 +1,3 @@
-
-<template>
-    <div class="card relative z-2">
-        <Menubar :model="items" />
-    </div>
-</template>
-
 <script setup>
 import { ref } from "vue";
 import Menubar  from 'primevue/menubar';
@@ -133,3 +126,13 @@ const items = ref([
     }
 ]);
 </script>
+
+<template>
+    <div class="card relative z-2">
+        <Menubar :model="items" />
+    </div>
+</template>
+
+<style scoped>
+
+</style>
